@@ -1,0 +1,43 @@
+[
+{
+"name": "Executive & Administration",
+"employees": [
+{ "firstName": "Eleanor", "lastName": "Vance" },
+{ "firstName": "Thomas", "lastName": "Wright" },
+{ "firstName": "Gemma", "lastName": "Aria" }
+]
+},
+{
+"name": "Information Technology",
+"employees": [
+{ "firstName": "Sarah", "lastName": "Jenkins" },
+{ "firstName": "Marcus", "lastName": "Brody" },
+{ "firstName": "David", "lastName": "Chen" },
+{ "firstName": "Amina", "lastName": "Kaur" }
+]
+},
+{
+"name": "Personal & Business Banking",
+"employees": [
+{ "firstName": "Maria", "lastName": "Gonzalez" },
+{ "firstName": "James", "lastName": "Wilson" },
+{ "firstName": "Aisha", "lastName": "Patel" },
+{ "firstName": "Lucas", "lastName": "Moreau" }
+]
+},
+{
+"name": "Wealth Management & Mortgages",
+"employees": [
+{ "firstName": "Robert", "lastName": "Taylor" },
+{ "firstName": "Linda", "lastName": "Martinez" },
+{ "firstName": "Sophia", "lastName": "Rossi" }
+]
+},
+{
+"name": "Risk & Compliance",
+"employees": [
+{ "firstName": "Anika", "lastName": "Sharma" },
+{ "firstName": "Alan", "lastName": "Turing" }
+]
+}
+]
