@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pixell River Employee Directory</title>
+    <link rel="stylesheet" href="styles.css"/>
+    <!-- Lab 4.1: no local data file is loaded any more. The repositories
+         below fetch Employees and Roles from the back-end API instead. -->
+    <script src="js/config.js" defer></script>
+    <script src="js/repositories/employeeRepository.js" defer></script>
+    <script src="js/repositories/roleRepository.js" defer></script>
+    <script src="js/app.js" defer></script>
+</head>
+<body>
+
+    <header role="banner">
+        <img src="https://itsm-ace.ca/images/logo.svg" alt="Pixell River Financial Logo" class="logo">
+        <div>
+            <h1>Pixell River Employee Directory</h1>
+            <p>Welcome to the Pixell River staff directory portal.</p>
+        </div>
+    </header>
+
+    <main id="main-content" role="main">
+        <!-- Employee list grouped by Department inserted dynamically via JavaScript -->
+        <p id="loading-message" role="status">Loading employees…</p>
+        <p id="error-message" role="alert" hidden></p>
+    </main>
+
+    <footer role="contentinfo">
+        <p>&copy; Copyright Pixell River Financial <span id="current-year"></span>. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
