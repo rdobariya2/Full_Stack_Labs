@@ -1,0 +1,100 @@
+body {
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333333;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: #0d47a1;
+            color: #ffffff;
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo {
+            height: 80px;
+            background-color: #ffffff;
+            padding: 4px;
+            border-radius: 4px;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 1.5rem;
+        }
+
+        header p {
+            margin: 3px 0 0 0;
+            font-size: 0.95rem;
+            color: #e0f2f1;
+        }
+
+        main {
+            max-width: 800px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        .department-section {
+            background-color: #ffffff;
+            border: 1px solid #cccccc;
+            border-radius: 6px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .department-title {
+            margin-top: 0;
+            margin-bottom: 12px;
+            color: #0d47a1;
+            font-size: 1.25rem;
+            border-bottom: 2px solid #0d47a1;
+            padding-bottom: 5px;
+        }
+
+        .employee-list {
+            margin: 0;
+            padding-left: 25px;
+        }
+
+        .employee-list li {
+            margin-bottom: 6px;
+            font-size: 1rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 15px;
+            background-color: #e0e0e0;
+            border-top: 1px solid #cccccc;
+            margin-top: 40px;
+            font-size: 0.9rem;
+        }
+/* Lab 4.1 additions — role line under each employee, plus loading/error states. */
+.employee-list li {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+}
+
+.employee-name {
+    font-weight: bold;
+}
+
+.employee-role {
+    font-size: 0.9rem;
+    color: #555555;
+}
+
+#error-message {
+    color: #b71c1c;
+    background-color: #ffebee;
+    border: 1px solid #ef9a9a;
+    border-radius: 6px;
+    padding: 12px;
+}

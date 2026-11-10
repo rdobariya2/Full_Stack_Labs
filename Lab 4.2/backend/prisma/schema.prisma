@@ -1,0 +1,73 @@
+// Lab 4.2 — Prisma schema for Pixell River Financial.
+// PostgreSQL. The database URL comes from the DATABASE_URL
+// environment variable (see backend/.env.example).
+//
+// NORMALIZATION — at least Third Normal Form (3NF):
+// - 1NF: every column holds a single atomic value. No column holds
+//   a list or an object. `fullName` is NOT stored — it is derived
+//   in the service from firstName + lastName.
+// - 2NF: every table has a single-column primary key (id), so every
+//   non-key column depends on the whole key. There are no composite
+//   keys to partially depend on.
+// - 3NF: no non-key column depends on another non-key column.
+//   * A department's name lives only in Department.name, not in
+//     Employee. Employee only stores departmentId (a foreign key).
+//   * A role's title, description and category live only in Role.
+//     Employee only stores roleId (a foreign key).
+//   * firstName / lastName depend only on the Employee's own id.
+//   If department or role details change, they change in one row,
+//   in one table — no update anomaly in Employee rows.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum RoleCategory {
+  Executive
+  Management
+  ITS_Security // "ITS & Security" in the case study (Appendix B)
+}
+
+/// One row per department from employees_dept.json (Labs 1.1-4.1).
+/// Previously the department name was repeated as a plain string
+/// on every employee — now it lives here, once.
+model Department {
+  id        String     @id // e.g. "dept-it"
+  name      String     @unique // e.g. "Information Technology"
+  employees Employee[]
+
+  @@map("departments")
+}
+
+/// One row per job role from Appendix B of the case study.
+model Role {
+  id          String       @id // e.g. "role-ceo"
+  title       String       @unique // e.g. "CEO/Chair of Board"
+  description String
+  category    RoleCategory
+  employees   Employee[]
+
+  @@map("roles")
+}
+
+/// One row per employee. Only foreign keys link out — no role or
+/// department details are duplicated here.
+model Employee {
+  id           String     @id // e.g. "emp-01"
+  firstName    String
+  lastName     String
+  departmentId String
+  roleId       String
+
+  department Department @relation(fields: [departmentId], references: [id])
+  role       Role       @relation(fields: [roleId], references: [id])
+
+  @@index([departmentId])
+  @@index([roleId])
+  @@map("employees")
+}

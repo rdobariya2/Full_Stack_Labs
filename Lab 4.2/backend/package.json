@@ -1,0 +1,40 @@
+{
+  "dependencies": {
+    "@prisma/client": "^6.0.0",
+    "cors": "^2.8.5",
+    "express": "^4.21.2",
+    "helmet": "^7.2.0",
+    "zod": "^3.23.8",
+    "dotenv": "^16.4.5"
+  },
+  "description": "Pixell River Financial \u2014 Lab 4.2 back-end (Express + TypeScript + Prisma/PostgreSQL). Serves Employee and Role data from a Postgres database; repositories read via Prisma instead of in-memory data.",
+  "devDependencies": {
+    "@types/cors": "^2.8.17",
+    "@types/express": "^4.17.21",
+    "@types/node": "^22.7.0",
+    "prisma": "^6.0.0",
+    "tsx": "^4.19.1",
+    "typescript": "^5.6.2"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "main": "dist/server.js",
+  "name": "pixell-river-backend",
+  "prisma": {
+    "seed": "tsx prisma/seed.ts"
+  },
+  "private": true,
+  "scripts": {
+    "build": "prisma generate && tsc",
+    "db:deploy": "prisma migrate deploy",
+    "db:migrate": "prisma migrate dev",
+    "db:seed": "tsx prisma/seed.ts",
+    "db:studio": "prisma studio",
+    "dev": "tsx watch src/server.ts",
+    "postinstall": "prisma generate",
+    "start": "node dist/server.js",
+    "typecheck": "tsc --noEmit"
+  },
+  "version": "1.0.0"
+}
