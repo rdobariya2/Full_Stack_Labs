@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pixell River Employee Directory</title>
+    <link rel="stylesheet" href="styles.css"/>
+    <script src="js/config.js" defer></script>
+    <script src="js/auth.js" defer></script>
+    <script src="js/repositories/employeeRepository.js" defer></script>
+    <script src="js/repositories/roleRepository.js" defer></script>
+    <script src="js/app.js" defer></script>
+</head>
+<body>
+
+    <header role="banner">
+        <img src="https://itsm-ace.ca/images/logo.svg" alt="Pixell River Financial Logo" class="logo">
+        <div>
+            <h1>Pixell River Employee Directory</h1>
+            <p>Welcome to the Pixell River staff directory portal.</p>
+        </div>
+        <nav class="main-nav">
+            <a href="index.html" class="active">Employees</a>
+            <a href="roles.html">Roles</a>
+            <span data-auth-signed-out>
+                <a href="#" data-sign-in>Log in</a>
+            </span>
+            <span data-auth-signed-in hidden>
+                <span id="user-name"></span>
+                <a href="#" data-sign-out>Log out</a>
+            </span>
+        </nav>
+    </header>
+
+    <main id="main-content" role="main">
+        <p id="loading-message" role="status">Loading employees…</p>
+        <p id="error-message" role="alert" hidden></p>
+
+        <section class="entry-section">
+            <h2>Add an employee</h2>
+            <form id="employee-form" data-auth-signed-in hidden>
+                <label>First name <input name="firstName" required></label>
+                <label>Last name <input name="lastName" required></label>
+                <label>Department
+                    <select name="department" id="department-select" required></select>
+                </label>
+                <label>Role
+                    <select name="roleId" id="role-select" required></select>
+                </label>
+                <button type="submit">Add employee</button>
+                <p id="employee-form-message" role="status"></p>
+            </form>
+            <div class="login-box" data-auth-signed-out>
+                <p>Log in to add an employee.</p>
+                <a href="#" data-sign-in>Log in</a>
+            </div>
+        </section>
+    </main>
+
+    <footer role="contentinfo">
+        <p>&copy; Copyright Pixell River Financial <span id="current-year"></span>. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>

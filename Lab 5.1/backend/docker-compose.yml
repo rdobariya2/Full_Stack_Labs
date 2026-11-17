@@ -1,0 +1,27 @@
+# Lab 4.2 — local PostgreSQL for development.
+# Run from this folder (backend/):
+#   docker compose up -d
+#   npx prisma migrate deploy
+#   npm run db:seed
+# Stop with: docker compose down
+# (Add -v to `down` only if you want to delete the data volume.)
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: pixell-river-postgres
+    environment:
+      POSTGRES_USER: pixell
+      POSTGRES_PASSWORD: pixell
+      POSTGRES_DB: pixell_river
+    ports:
+      - "5432:5432"
+    volumes:
+      - pixell-river-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U pixell -d pixell_river"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  pixell-river-data:

@@ -1,0 +1,9 @@
+{
+  "description": "Pixell River Financial - Lab 5.1 monorepo: static frontend + Express/TypeScript/Prisma/PostgreSQL backend with Clerk auth.",
+  "name": "pixell-river-lab-5.1",
+  "private": true,
+  "version": "1.0.0",
+  "workspaces": [
+    "backend"
+  ]
+}

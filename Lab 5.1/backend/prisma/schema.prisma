@@ -1,0 +1,58 @@
+// Lab 4.2 - Prisma schema for Pixell River Financial.
+// DATABASE_URL comes from backend/.env.
+//
+// Normalization (3NF):
+// - 1NF: each column holds one value. fullName is not stored,
+//   it is built in the service from firstName + lastName.
+// - 2NF: each table has a single-column id, so every other column
+//   depends on the whole key.
+// - 3NF: department names live only in Department, role details
+//   only in Role. Employee stores only departmentId and roleId.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum RoleCategory {
+  Executive
+  Management
+  ITS_Security // "ITS & Security" in Appendix B
+}
+
+model Department {
+  id        String     @id
+  name      String     @unique
+  employees Employee[]
+
+  @@map("departments")
+}
+
+model Role {
+  id          String       @id
+  title       String       @unique
+  description String
+  category    RoleCategory
+  employees   Employee[]
+
+  @@map("roles")
+}
+
+model Employee {
+  id           String     @id
+  firstName    String
+  lastName     String
+  departmentId String
+  roleId       String
+
+  department Department @relation(fields: [departmentId], references: [id])
+  role       Role       @relation(fields: [roleId], references: [id])
+
+  @@index([departmentId])
+  @@index([roleId])
+  @@map("employees")
+}
